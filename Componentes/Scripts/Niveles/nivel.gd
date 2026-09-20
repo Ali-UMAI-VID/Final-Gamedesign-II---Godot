@@ -42,7 +42,7 @@ func _physics_process(delta):
 			Globales.puede_moverse = false
 			animacion_puerta.play("Puerta")
 			await animacion_puerta.animation_finished
-			jugador.position.y -= 65
+			jugador.position.y -= 100
 			puerta = 0
 			print(jugador.position.y)
 			Globales.puede_moverse = true
@@ -53,7 +53,7 @@ func _physics_process(delta):
 			Globales.puede_moverse = false
 			animacion_puerta.play("Puerta")
 			await animacion_puerta.animation_finished
-			jugador.position.y += 65
+			jugador.position.y += 100
 			puerta = 0
 			Globales.puede_moverse = true
 
