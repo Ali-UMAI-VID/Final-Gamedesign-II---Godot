@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bwwucopupktcx"]
+
+[ext_resource type="Script" uid="uid://074w0frqhitl" path="res://Componentes/Scripts/Objetos/tarjeta.gd" id="1_6hfkt"]
+[ext_resource type="Texture2D" uid="uid://ras86jk8yycj" path="res://Componentes/Sprites/Objetos/Tarjetita.png" id="2_w3s05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
+size = Vector2(41.429077, 23.457672)
+
+[node name="Tarjeta" type="Area2D" unique_id=2076608602]
+script = ExtResource("1_6hfkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478343674]
+scale = Vector2(0.03773585, 0.03773585)
+texture = ExtResource("2_w3s05")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1180655061]
+position = Vector2(20.285461, 12.271164)
+shape = SubResource("RectangleShape2D_vq16u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

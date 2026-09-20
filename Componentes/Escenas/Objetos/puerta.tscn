@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bsuxh81u67klt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b5vyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
+size = Vector2(85.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
+size = Vector2(85, 9)
+
+[node name="Puerta" type="CharacterBody2D" unique_id=9581305]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073815919]
+modulate = Color(0, 0.64963555, 0.66875, 1)
+position = Vector2(42.75, 9.787085)
+scale = Vector2(86.5, 20.57417)
+texture = SubResource("CanvasTexture_b5vyj")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1879916634]
+
+[node name="ColisionPuerta" type="CollisionShape2D" parent="Area2D2" unique_id=1728053990]
+position = Vector2(43.25, 16)
+shape = SubResource("RectangleShape2D_vpy8e")
+debug_color = Color(0.7019608, 0, 0.627451, 1)
+
+[node name="Activar_colision" type="Area2D" parent="." unique_id=1305127149]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Activar_colision" unique_id=1988888336]
+position = Vector2(44, 7)
+shape = SubResource("RectangleShape2D_vq16u")
+debug_color = Color(0, 0.70196074, 0.08391722, 0.41960785)

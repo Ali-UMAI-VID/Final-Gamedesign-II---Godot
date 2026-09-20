@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bmsltnusif8fc"]
+
+[ext_resource type="Script" uid="uid://brhfab1mierm0" path="res://Componentes/Scripts/Enemigo/enemigo.gd" id="1_seoi2"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://Componentes/Sprites/Enemigo/icon.svg" id="2_kedtw"]
+[ext_resource type="Script" uid="uid://bqr8l18jekr86" path="res://Componentes/Scripts/Enemigo/Estados/maquinaestado.gd" id="3_seoi2"]
+[ext_resource type="Script" uid="uid://blxccu4f67bht" path="res://Componentes/Scripts/Enemigo/Estados/estadonormal.gd" id="4_kedtw"]
+[ext_resource type="Script" uid="uid://cgf4o0o23o677" path="res://Componentes/Scripts/Enemigo/Estados/estadojugador.gd" id="5_kedtw"]
+[ext_resource type="AudioStream" uid="uid://bic13ccbr47at" path="res://Componentes/Sonidos/Enemigo/dragon-studio-alien-sounds-463202.mp3" id="6_4h8to"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq16u"]
+radius = 212.60292
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kedtw"]
+radius = 52.611786
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgweg"]
+radius = 10.048546
+
+[node name="enemigoIA" type="CharacterBody2D" unique_id=2044227649 node_paths=PackedStringArray("mirada", "Cercania_sonido", "perseguir")]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_seoi2")
+mirada = NodePath("mirada_enemigo")
+speed = 200.0
+Cercania_sonido = NodePath("RuidodecercaniaEnemigo")
+perseguir = NodePath("TimerPerseguir")
+
+[node name="area_ruido_ene" type="Area2D" parent="." unique_id=1004538319]
+
+[node name="Circulo_ruido" type="CollisionShape2D" parent="area_ruido_ene" unique_id=1308890430]
+shape = SubResource("CircleShape2D_vq16u")
+debug_color = Color(0, 0.70196074, 0.1427287, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1922604708]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kedtw")
+
+[node name="enemigo_colision" type="CollisionShape2D" parent="." unique_id=1547080500]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_kedtw")
+debug_color = Color(1, 0, 0.95076036, 0.41960785)
+
+[node name="mirada_enemigo" type="Area2D" parent="." unique_id=614567606]
+position = Vector2(68, -4)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="area_jugador" type="CollisionShape2D" parent="mirada_enemigo" unique_id=1797057436]
+position = Vector2(-1088, 64)
+scale = Vector2(118, 118)
+shape = SubResource("CircleShape2D_pgweg")
+debug_color = Color(0, 0.57728136, 0.8173498, 0.41960785)
+
+[node name="MaquinaEstado" type="Node" parent="." unique_id=1129650958 node_paths=PackedStringArray("estado_inicial")]
+script = ExtResource("3_seoi2")
+estado_inicial = NodePath("EstadoNormal")
+
+[node name="EstadoNormal" type="Node" parent="MaquinaEstado" unique_id=1652717605 node_paths=PackedStringArray("enemigo")]
+script = ExtResource("4_kedtw")
+enemigo = NodePath("../..")
+
+[node name="EstadoJugador" type="Node" parent="MaquinaEstado" unique_id=416554523]
+script = ExtResource("5_kedtw")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1335557601]
+path_desired_distance = 40.0
+
+[node name="Timerquieto" type="Timer" parent="." unique_id=608664314]
+wait_time = 0.1
+
+[node name="TimerPerseguir" type="Timer" parent="." unique_id=370818705]
+wait_time = 7.0
+
+[node name="TimerRastreo" type="Timer" parent="." unique_id=1259930098]
+wait_time = 0.5
+autostart = true
+
+[node name="RuidodecercaniaEnemigo" type="AudioStreamPlayer2D" parent="." unique_id=696899243]
+stream = ExtResource("6_4h8to")
+
+[connection signal="body_entered" from="area_ruido_ene" to="." method="_on_area_ruido_ene_body_entered"]
+[connection signal="body_exited" from="area_ruido_ene" to="." method="_on_area_ruido_ene_body_exited"]
+[connection signal="body_entered" from="mirada_enemigo" to="." method="_on_mirada_enemigo_body_entered"]
+[connection signal="timeout" from="Timerquieto" to="." method="_on_timerquieto_timeout"]
+[connection signal="timeout" from="TimerPerseguir" to="." method="_on_timer_perseguir_timeout"]
+[connection signal="timeout" from="TimerRastreo" to="." method="_on_timer_rastreo_timeout"]

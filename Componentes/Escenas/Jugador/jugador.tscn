@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://crcmhhyefq5yw"]
+
+[ext_resource type="Texture2D" uid="uid://m13a5j3nhoj5" path="res://Componentes/Sprites/Jugador/Ben tennyson.png" id="1_3lrj7"]
+[ext_resource type="Script" uid="uid://c2i3311jqkbqq" path="res://Componentes/Scripts/Jugador/jugador.gd" id="1_qtn0f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3lrj7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
+size = Vector2(64, 104)
+
+[node name="Jugador" type="CharacterBody2D" unique_id=2082224300 node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_qtn0f")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974747354]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_vq16u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480513506]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_vpy8e")
