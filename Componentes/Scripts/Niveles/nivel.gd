@@ -3,6 +3,8 @@ class_name nivel
 @export var enemigo: EnemigoIA
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var jugador = $Jugador
+@onready var oxigeno = $Jugador/Oxigeno
+var timer_oxigeno: float = 3
 
 #puerta
 @onready var animacion_puerta = $Animacion_puerta
@@ -10,50 +12,63 @@ class_name nivel
 @onready var animacion_puerta_3 = $Animacion_puerta3
 var puerta = 0
 
+func _process(delta):
+	if Globales.gana_oxigeno == false:
+		Globales.oxigeno -= 0.5 * delta
+	else:
+		Globales.oxigeno += delta * 5
+
+	if Globales.oxigeno >= 100:
+		Globales.oxigeno = 100
+
 func _physics_process(delta):
+	if Globales.vidas <= 0:
+		get_tree().quit()
+	if Globales.oxigeno <= 0:
+		get_tree().quit()
+	oxigeno.text = str(int(Globales.oxigeno))
  #1 es izquierda, 2 es derecha, 3 arriba y 4 abajo
 	#if puerta != 0:
 	#	Globales.puede_moverse = false
 
-
 	if puerta == 1:#izquierda
-		if Input.is_action_just_pressed("Mov_puerta") and Globales.puede_moverse == true:
+		if Input.is_action_just_pressed("Accion") and Globales.puede_moverse == true:
 			Globales.puede_moverse = false
 			animacion_puerta_2.play("Puerta")
 			await animacion_puerta_2.animation_finished
-			jugador.position.x -= 50
+			jugador.position.x -= 100
 			puerta = 0
 			Globales.puede_moverse = true
 
 
 	if puerta == 2:#derecha
-		if Input.is_action_just_pressed("Mov_puerta") and Globales.puede_moverse == true:
+		if Input.is_action_just_pressed("Accion") and Globales.puede_moverse == true:
 			Globales.puede_moverse = false
 			animacion_puerta_2.play("Puerta")
 			await animacion_puerta_2.animation_finished
-			jugador.position.x += 50
+			jugador.position.x += 100
 			puerta = 0
 			Globales.puede_moverse = true
 
 
 	if puerta == 3:  #arriba
-		if Input.is_action_just_pressed("Mov_puerta") and Globales.puede_moverse == true:
+		if Input.is_action_just_pressed("Accion") and Globales.puede_moverse == true:
 			print(jugador.position.y)
 			Globales.puede_moverse = false
 			animacion_puerta.play("Puerta")
 			await animacion_puerta.animation_finished
-			jugador.position.y -= 100
+			jugador.position.y -= 50
 			puerta = 0
 			print(jugador.position.y)
 			Globales.puede_moverse = true
 
 
 	if puerta == 4:#abajo
-		if Input.is_action_just_pressed("Mov_puerta") and Globales.puede_moverse == true:
+		if Input.is_action_just_pressed("Accion") and Globales.puede_moverse == true:
 			Globales.puede_moverse = false
 			animacion_puerta.play("Puerta")
 			await animacion_puerta.animation_finished
-			jugador.position.y += 100
+			jugador.position.y += 50
 			puerta = 0
 			Globales.puede_moverse = true
 
@@ -84,8 +99,4 @@ func _on_area_puerta_salida_body_entered(body):
 				print("pasa")
 				animacion_puerta_3.play("Puerta")
 				await animacion_puerta_3.animation_finished
-				jugador.position = Vector2(1231.0, 408)
-
-
-func _on_area_puerta_abajo_body_exited(body):
-	pass # Replace with function body.
+				jugador.position = Vector2(1291.0, 404)
