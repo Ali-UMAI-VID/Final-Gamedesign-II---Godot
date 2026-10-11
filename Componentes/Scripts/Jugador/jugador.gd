@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name  Jugador
 
-@export var velocidad : float = 200
+@export var velocidad : float = 160
 var movimiento_lateral_activado : bool = true
 @export var sprite : AnimatedSprite2D
 
