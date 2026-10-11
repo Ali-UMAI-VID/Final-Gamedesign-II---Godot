@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name EnemigoIA
 
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var maquina : MaquinaEstado = get_node("MaquinaEstado")
 @export var mirada : Area2D
 @export var waypoints: Array[Marker2D]
 @export var speed: float
@@ -10,37 +9,38 @@ class_name EnemigoIA
 
 var veloPerseguir: int = 150
 @export var player: Jugador
-@export var perseguir: Timer
+@export var perseguir_timer: Timer
 
-var current_index = 0
-var is_waiting = false
+var current_index : int = 0 # numero de waypoint que esta el jugador
+var is_waiting : bool = false #espera entre waypoints
 #var direccion : Vector2 = Vector2.ZERO
+var estado : String = "vigilando"
 
 func _ready():
 	#player = get_tree().get_first_node_in_group("player")
 	pass
 	
 func _physics_process(delta):
-	if Globales.enemigo_a_jugador == false:
-		_ene_vigila()
-	else:
-		var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
-		velocity = direction * veloPerseguir
+	if estado == "vigilando":
+		_ene_vigilando()
+	elif estado == "persiguiendo":
+		_ene_persiguiendo()
+	elif estado == "muerto":
+		_ene_muerto()
 	move_and_slide()
 
 #timer out	is_waiting = false
 
-func _ene_vigila():
+func _ene_vigilando():
 	
 	if is_waiting:
 		return
-#	maquina.estado.proceso(delta)
+	
 	var min_distance = 5.0
 	var target_position = waypoints[current_index].global_position
-	var direction = target_position - global_position
-	var distance = direction.length()
+	var direction = global_position.direction_to(target_position)
+	var distance = global_position.distance_to(target_position)
 	
-	direction = direction.normalized()
 	velocity = direction * speed
 	if distance < min_distance:
 		current_index += 1
@@ -51,7 +51,11 @@ func _ene_vigila():
 			current_index = 0
 	move_and_slide()
 	
-func _ene_a_jugador():
+func _ene_persiguiendo():
+	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
+	velocity = direction * veloPerseguir
+
+func _ene_muerto():
 	pass
 
 func _on_timerquieto_timeout():
@@ -60,13 +64,13 @@ func _on_timerquieto_timeout():
 
 #func _on_mirada_enemigo_area_entered(area):
 #	if area is Jugador:
-#		Globales.enemigo_a_jugador = true
-#		perseguir.start()
+#		persiguiendo = true
+#		perseguir_timer.start()
 #		print("toca a jugador")
 
 
-func _on_timer_perseguir_timeout():
-	Globales.enemigo_a_jugador = false
+func _on_timer_perseguir_timer_timeout():
+	estado = "vigilando"
 
 
 func _on_timer_rastreo_timeout():
@@ -76,9 +80,9 @@ func _on_timer_rastreo_timeout():
 
 func _on_mirada_enemigo_body_entered(body):
 	if body is Jugador:
-		Globales.enemigo_a_jugador = true
-		perseguir.start()
-		print("toca a jugador")
+		estado = "persiguiendo"
+		perseguir_timer.start()
+		#print("toca a jugador")
 
 
 func _on_area_ruido_ene_body_entered(body):
@@ -89,3 +93,9 @@ func _on_area_ruido_ene_body_entered(body):
 func _on_area_ruido_ene_body_exited(body):
 	if body is Jugador:
 		Cercania_sonido.stop()
+
+
+func _on_ataque_area_body_entered(body):
+	if body is Jugador:
+		Globales.vidas -= 1
+		print(Globales.vidas)
