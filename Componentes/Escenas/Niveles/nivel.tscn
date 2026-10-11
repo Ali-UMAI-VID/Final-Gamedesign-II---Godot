@@ -4260,7 +4260,7 @@ position = Vector2(333.99988, 269)
 position = Vector2(543, 404)
 
 [node name="ColisionSalida" type="CollisionShape2D" parent="AreaPuertaSalida" unique_id=402140402]
-visible = false
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_vq16u")
 one_way_collision_margin = 0.0
 debug_color = Color(0, 0.70196074, 0.17733684, 0.41960785)

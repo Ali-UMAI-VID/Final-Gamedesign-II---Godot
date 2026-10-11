@@ -11,15 +11,22 @@ var timer_oxigeno: float = 3
 @onready var animacion_puerta_2 = $Animacion_puerta2
 @onready var animacion_puerta_3 = $Animacion_puerta3
 var puerta = 0
-
+var area_salida = false
 func _process(delta):
 	if Globales.gana_oxigeno == false:
-		Globales.oxigeno -= 0.5 * delta
+		Globales.oxigeno -= 4 * delta
 	else:
-		Globales.oxigeno += delta * 5
+		Globales.oxigeno += delta * 7
 
 	if Globales.oxigeno >= 100:
 		Globales.oxigeno = 100
+	
+	if area_salida == true:
+		if Input.is_action_pressed("Accion"):
+			print("pasa")
+			animacion_puerta_3.play("Puerta")
+			await animacion_puerta_3.animation_finished
+			jugador.position = Vector2(1291.0, 404)
 
 func _physics_process(delta):
 	if Globales.vidas <= 0:
@@ -95,8 +102,4 @@ func _on_area_puerta_body_exited(body):
 func _on_area_puerta_salida_body_entered(body):
 	if body is Jugador:
 		if Globales.tarjetas == 3:
-			if Input.is_action_pressed("Mov_derecha"):
-				print("pasa")
-				animacion_puerta_3.play("Puerta")
-				await animacion_puerta_3.animation_finished
-				jugador.position = Vector2(1291.0, 404)
+			area_salida = true
