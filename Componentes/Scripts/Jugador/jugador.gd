@@ -8,6 +8,7 @@ var movimiento_lateral_activado : bool = true
 func _physics_process(delta):
 	var direccion: int = 0
 	var escalera: int = 0
+	
 	if Input.is_action_pressed("Mov_izquierda") and Globales.puede_moverse == true:
 		sprite.flip_h = true
 		direccion = -1

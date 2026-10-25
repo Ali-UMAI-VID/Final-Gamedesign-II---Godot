@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://m13a5j3nhoj5" path="res://Componentes/Sprites/Jugador/Ben tennyson.png" id="1_3lrj7"]
 [ext_resource type="Script" uid="uid://c2i3311jqkbqq" path="res://Componentes/Scripts/Jugador/jugador.gd" id="1_qtn0f"]
+[ext_resource type="Script" uid="uid://bqr8l18jekr86" path="res://Componentes/Scripts/Enemigo/Estados/maquinaestado.gd" id="3_75bvj"]
+[ext_resource type="Script" uid="uid://cx33xg8xa1ax0" path="res://Componentes/Scripts/Jugador/estado_caminar.gd" id="4_pjygu"]
+[ext_resource type="Script" uid="uid://ce1yia8p3s1ob" path="res://Componentes/Scripts/Jugador/estado_carga_o_2.gd" id="5_oec6u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
 animations = [{
@@ -29,3 +32,12 @@ sprite_frames = SubResource("SpriteFrames_vq16u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480513506]
 scale = Vector2(0.45, 0.45)
 shape = SubResource("RectangleShape2D_vpy8e")
+
+[node name="MaquinaEstado" type="Node" parent="." unique_id=867199689]
+script = ExtResource("3_75bvj")
+
+[node name="EstadoCaminar" type="Node" parent="MaquinaEstado" unique_id=684051601]
+script = ExtResource("4_pjygu")
+
+[node name="EstadoCargaO2" type="Node" parent="MaquinaEstado" unique_id=1956664960]
+script = ExtResource("5_oec6u")
