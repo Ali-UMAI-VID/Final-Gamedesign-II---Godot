@@ -26,13 +26,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kedtw"]
-radius = 58.35318
+radius = 44.21991
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgweg"]
 radius = 321.79816
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpy8e"]
-radius = 26.506023
+radius = 38.554214
 
 [node name="enemigoIA" type="CharacterBody2D" unique_id=2044227649 node_paths=PackedStringArray("mirada", "Cercania_sonido", "perseguir_timer")]
 scale = Vector2(0.415, 0.415)
@@ -91,6 +91,7 @@ volume_db = -15.0
 [node name="ataque_area" type="Area2D" parent="." unique_id=1095659171]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ataque_area" unique_id=528442284]
+position = Vector2(0, -2.4096384)
 shape = SubResource("CircleShape2D_vpy8e")
 debug_color = Color(1, 0.059892774, 0, 0.41960785)
 
