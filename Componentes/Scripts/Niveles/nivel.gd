@@ -3,8 +3,9 @@ class_name nivel
 @export var enemigo: EnemigoIA
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var jugador = $Jugador
-@onready var oxigeno = $Jugador/Oxigeno
 var timer_oxigeno: float = 3
+@onready var oxigeno = $Jugador/Interfaz/Oxigeno
+
 
 #puerta
 @onready var animacion_puerta = $Animacion_puerta
@@ -13,21 +14,16 @@ var timer_oxigeno: float = 3
 var puerta = 0
 var area_salida = false
 func _process(delta):
-	if Globales.gana_oxigeno == false:
-		Globales.oxigeno -= 4 * delta
-	else:
-		Globales.oxigeno += delta * 7
 
-	if Globales.oxigeno >= 100:
-		Globales.oxigeno = 100
-	
 	if area_salida == true:
 		if Input.is_action_pressed("Accion"):
 			print("pasa")
 			animacion_puerta_3.play("Puerta")
 			await animacion_puerta_3.animation_finished
 			jugador.position = Vector2(1291.0, 404)
-
+	$Jugador/Interfaz.barra_oxigeno.value = Globales.oxigeno
+	
+	$Jugador/Interfaz.barra_vida.value = Globales.vidas * 33.33
 func _physics_process(delta):
 	if Globales.vidas <= 0:
 		get_tree().quit()
