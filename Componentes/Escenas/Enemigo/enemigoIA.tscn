@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bspupl40r6mac" path="res://Componentes/Sprites/Enemigo/Arcade - Alien vs. Predator - Enemies & Bosses - Alien 1.png" id="2_4h8to"]
 [ext_resource type="AudioStream" uid="uid://bic13ccbr47at" path="res://Componentes/Sonidos/Enemigo/dragon-studio-alien-sounds-463202.mp3" id="6_4h8to"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
+size = Vector2(323.0724, 268.85553)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vq16u"]
 radius = 559.8238
 
@@ -43,6 +46,14 @@ mirada = NodePath("mirada_enemigo")
 speed = 150.0
 Cercania_sonido = NodePath("RuidodecercaniaEnemigo")
 perseguir_timer = NodePath("TimerPerseguir")
+
+[node name="Area_punto" type="Area2D" parent="." unique_id=1205798600 groups=["Punto_enemigo"]]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="colision_punto" type="CollisionShape2D" parent="Area_punto" unique_id=1974083633]
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_vq16u")
+debug_color = Color(0.70196074, 0.5390157, 0.530633, 0.41960785)
 
 [node name="area_ruido_ene" type="Area2D" parent="." unique_id=1004538319]
 scale = Vector2(0.415, 0.415)

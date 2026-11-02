@@ -7,7 +7,7 @@
 radius = 98.76544
 height = 513.58026
 
-[node name="Oxigeno" type="Area2D" unique_id=346199778]
+[node name="Oxigeno" type="Area2D" unique_id=346199778 groups=["Carga_oxigeno"]]
 scale = Vector2(0.225, 0.225)
 script = ExtResource("1_cjhb3")
 

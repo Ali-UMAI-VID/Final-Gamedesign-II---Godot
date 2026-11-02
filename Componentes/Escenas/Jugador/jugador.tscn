@@ -20,24 +20,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
 size = Vector2(64, 104)
 
-[node name="Jugador" type="CharacterBody2D" unique_id=2082224300 node_paths=PackedStringArray("sprite")]
+[node name="Jugador" type="CharacterBody2D" unique_id=2082224300]
 scale = Vector2(0.45, 0.45)
 script = ExtResource("1_qtn0f")
-sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974747354]
+[node name="AnimacionJugador" type="AnimatedSprite2D" parent="." unique_id=1974747354]
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_vq16u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480513506]
+[node name="ColisionJugador" type="CollisionShape2D" parent="." unique_id=1480513506]
+scale = Vector2(0.45, 0.45)
+shape = SubResource("RectangleShape2D_vpy8e")
+debug_color = Color(0.70196074, 0, 0.5688991, 0.41960785)
+
+[node name="MaquinaEstado" type="Node" parent="." unique_id=867199689 node_paths=PackedStringArray("estado_inicial")]
+script = ExtResource("3_75bvj")
+estado_inicial = NodePath("Estado_Caminar")
+
+[node name="Estado_Caminar" type="Node" parent="MaquinaEstado" unique_id=684051601]
+script = ExtResource("4_pjygu")
+
+[node name="Estado_Oxigeno" type="Node" parent="MaquinaEstado" unique_id=1956664960]
+script = ExtResource("5_oec6u")
+
+[node name="AreaJugador" type="Area2D" parent="." unique_id=1807662451]
+
+[node name="Colision_area" type="CollisionShape2D" parent="AreaJugador" unique_id=1153598267]
 scale = Vector2(0.45, 0.45)
 shape = SubResource("RectangleShape2D_vpy8e")
 
-[node name="MaquinaEstado" type="Node" parent="." unique_id=867199689]
-script = ExtResource("3_75bvj")
-
-[node name="EstadoCaminar" type="Node" parent="MaquinaEstado" unique_id=684051601]
-script = ExtResource("4_pjygu")
-
-[node name="EstadoCargaO2" type="Node" parent="MaquinaEstado" unique_id=1956664960]
-script = ExtResource("5_oec6u")
+[connection signal="area_entered" from="AreaJugador" to="MaquinaEstado/Estado_Caminar" method="_on_area_jugador_area_entered"]
+[connection signal="area_exited" from="AreaJugador" to="MaquinaEstado/Estado_Oxigeno" method="_on_area_jugador_area_exited"]

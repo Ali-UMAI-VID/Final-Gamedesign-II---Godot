@@ -6,6 +6,6 @@ var gana_oxigeno : bool = false
 var vidas: int = 3
 #var direccion_enemigo: Vector2 = Vector2.UP
 #var direccion_jugador: Vector2 = Vector2.UP
-
+var ene_sigue_a: int = 0
 
 var tarjetas: int  = 0

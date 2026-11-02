@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dws762efshw25" path="res://Componentes/Sprites/Objetos/Puerta/4.png" id="10_y68kf"]
 [ext_resource type="PackedScene" uid="uid://c0b4plg737wdl" path="res://Componentes/Escenas/Objetos/Oxigeno.tscn" id="11_0mu68"]
 [ext_resource type="PackedScene" uid="uid://kxfv3oxm3co" path="res://Componentes/Escenas/Niveles/interfaz.tscn" id="12_0mu68"]
+[ext_resource type="PackedScene" uid="uid://cdh70w2yxr8yq" path="res://Componentes/Escenas/Enemigo/punto_enemigo_1.tscn" id="13_y68kf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eo7k2"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -4026,25 +4027,25 @@ sources/0 = SubResource("TileSetAtlasSource_4k5w0")
 [sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
 animations = [{
 "frames": [{
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("7_jpb2n")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("8_4k5w0")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("9_0mu68")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("10_y68kf")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("9_0mu68")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("8_4k5w0")
 }, {
-"duration": 0.4,
+"duration": 0.2,
 "texture": ExtResource("7_jpb2n")
 }],
 "loop": 0,
@@ -4078,7 +4079,7 @@ rendering_quadrant_size = 25
 [node name="Waypoint0" type="Marker2D" parent="Waypoints" unique_id=322830323]
 modulate = Color(1, 0.9481443, 0, 1)
 self_modulate = Color(0.9283457, 1, 0, 1)
-position = Vector2(131, 122)
+position = Vector2(5, -25)
 
 [node name="Waypoint1" type="Marker2D" parent="Waypoints" unique_id=353464456]
 position = Vector2(202, 126)
@@ -4177,7 +4178,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="enemigoIA" parent="." unique_id=2044227649 node_paths=PackedStringArray("waypoints", "player") instance=ExtResource("2_rs2tp")]
-position = Vector2(163, 125)
+position = Vector2(337, 279.99997)
 waypoints = [NodePath("../Waypoints/Waypoint0"), NodePath("../Waypoints/Waypoint1"), NodePath("../Waypoints/Waypoint2"), NodePath("../Waypoints/Waypoint3"), NodePath("../Waypoints/Waypoint4"), NodePath("../Waypoints/Waypoint5"), NodePath("../Waypoints/Waypoint6"), NodePath("../Waypoints/Waypoint7"), NodePath("../Waypoints/Waypoint8"), NodePath("../Waypoints/Waypoint9"), NodePath("../Waypoints/Waypoint10"), NodePath("../Waypoints/Waypoint11"), NodePath("../Waypoints/Waypoint12"), NodePath("../Waypoints/Waypoint13"), NodePath("../Waypoints/Waypoint14"), NodePath("../Waypoints/Waypoint15"), NodePath("../Waypoints/Waypoint16"), NodePath("../Waypoints/Waypoint17"), NodePath("../Waypoints/Waypoint18"), NodePath("../Waypoints/Waypoint19"), NodePath("../Waypoints/Waypoint20"), NodePath("../Waypoints/Waypoint21"), NodePath("../Waypoints/Waypoint22"), NodePath("../Waypoints/Waypoint23"), NodePath("../Waypoints/Waypoint24"), NodePath("../Waypoints/Waypoint25"), NodePath("../Waypoints/Waypoint26"), NodePath("../Waypoints/Waypoint27"), NodePath("../Waypoints/Waypoint28"), NodePath("../Waypoints/Waypoint29")]
 player = NodePath("../Jugador")
 
@@ -4233,7 +4234,7 @@ one_way_collision_margin = 0.0
 debug_color = Color(0, 0.70196074, 0.17733684, 0.41960785)
 
 [node name="Oxigeno" parent="." unique_id=346199778 instance=ExtResource("11_0mu68")]
-position = Vector2(-61.000015, 21)
+position = Vector2(-61, 19)
 
 [node name="Oxigeno2" parent="." unique_id=807576818 instance=ExtResource("11_0mu68")]
 position = Vector2(342, 125)
@@ -4242,13 +4243,15 @@ position = Vector2(342, 125)
 position = Vector2(105, 222)
 
 [node name="Tarjeta" parent="." unique_id=2076608602 instance=ExtResource("10_jpb2n")]
-position = Vector2(184, 468)
+position = Vector2(337.00006, 591)
 
 [node name="Tarjeta2" parent="." unique_id=716651413 instance=ExtResource("10_jpb2n")]
-position = Vector2(260, 48)
+position = Vector2(43, 63)
+num_tarjeta = 2
 
 [node name="Tarjeta3" parent="." unique_id=1179805472 instance=ExtResource("10_jpb2n")]
-position = Vector2(333.99988, 269)
+position = Vector2(524.99994, -29.000061)
+num_tarjeta = 3
 
 [node name="AreaPuertaSalida" type="Area2D" parent="." unique_id=1203071466]
 position = Vector2(543, 404)
@@ -4264,7 +4267,7 @@ position = Vector2(-76, 7)
 
 [node name="Camera2D" type="Camera2D" parent="Jugador" unique_id=1709982811]
 scale = Vector2(0.8333333, 0.8333333)
-zoom = Vector2(5.895, 5.895)
+zoom = Vector2(5.85, 5.85)
 limit_left = -2
 limit_top = 3
 limit_right = 667
@@ -4273,11 +4276,41 @@ limit_bottom = 683
 [node name="Interfaz" parent="Jugador" unique_id=462487421 instance=ExtResource("12_0mu68")]
 
 [node name="Oxigeno" type="Label" parent="Jugador/Interfaz" unique_id=1116092959]
-offset_left = 1804.5112
-offset_top = 616.5414
-offset_right = 1844.5112
-offset_bottom = 639.5414
+offset_left = 1769.9247
+offset_top = 589.47363
+offset_right = 1872.9247
+offset_bottom = 671.5413
 theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Punto_enemigo1" parent="." unique_id=1735385189 instance=ExtResource("13_y68kf")]
+position = Vector2(-76, 399)
+nro_punto = 1
+
+[node name="Punto_enemigo2" parent="." unique_id=1367543127 instance=ExtResource("13_y68kf")]
+position = Vector2(43, 385)
+nro_punto = 2
+
+[node name="Punto_enemigo3" parent="." unique_id=80973526 instance=ExtResource("13_y68kf")]
+position = Vector2(40, 266)
+nro_punto = 3
+
+[node name="Punto_enemigo4" parent="." unique_id=1946658969 instance=ExtResource("13_y68kf")]
+position = Vector2(118, 69)
+nro_punto = 4
+
+[node name="Punto_enemigo5" parent="." unique_id=1334904498 instance=ExtResource("13_y68kf")]
+position = Vector2(500, 266)
+nro_punto = 5
+
+[node name="Punto_enemigo6" parent="." unique_id=1735164681 instance=ExtResource("13_y68kf")]
+position = Vector2(400, 517)
+nro_punto = 6
+
+[node name="Punto_enemigo7" parent="." unique_id=1430952916 instance=ExtResource("13_y68kf")]
+position = Vector2(-78, 582)
+nro_punto = 7
 
 [connection signal="body_entered" from="AreaPuertaArriba" to="." method="_on_area_puerta_arriba_body_entered"]
 [connection signal="body_exited" from="AreaPuertaArriba" to="." method="_on_area_puerta_body_exited"]
@@ -4287,4 +4320,5 @@ theme_override_font_sizes/font_size = 40
 [connection signal="body_exited" from="AreaPuertaIzq" to="." method="_on_area_puerta_body_exited"]
 [connection signal="body_entered" from="AreaPuertaDer" to="." method="_on_area_puerta_der_body_entered"]
 [connection signal="body_exited" from="AreaPuertaDer" to="." method="_on_area_puerta_body_exited"]
+[connection signal="area_exited" from="AreaPuertaSalida" to="." method="_on_area_puerta_salida_area_exited"]
 [connection signal="body_entered" from="AreaPuertaSalida" to="." method="_on_area_puerta_salida_body_entered"]
