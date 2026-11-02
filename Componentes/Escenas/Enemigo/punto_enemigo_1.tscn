@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cdh70w2yxr8yq"]
+
+[ext_resource type="Script" uid="uid://cwp7ggttft0ho" path="res://Componentes/Escenas/Enemigo/punto_enemigo.gd" id="1_884d8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m55x7"]
+radius = 18.0
+
+[node name="Punto_enemigo1" type="Area2D" unique_id=1735385189]
+script = ExtResource("1_884d8")
+
+[node name="Colision_punto_enemigo" type="CollisionShape2D" parent="." unique_id=1855958402]
+shape = SubResource("CircleShape2D_m55x7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
