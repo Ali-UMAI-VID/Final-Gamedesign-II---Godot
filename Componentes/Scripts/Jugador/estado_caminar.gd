@@ -2,7 +2,7 @@ extends Estado
 class_name EstadoCaminar
 @onready var animacion_jugador = $"../../AnimacionJugador"
 @onready var jugador = $"../.."
-@export var velocidad : float = 160
+@export var velocidad : float = 100
 func entrada():
 	maquina.jugador.movimiento_lateral_activado = true
 func _physics_process(delta):

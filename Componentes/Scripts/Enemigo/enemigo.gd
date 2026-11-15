@@ -7,7 +7,7 @@ class_name EnemigoIA
 @export var speed: float
 @export var Cercania_sonido : AudioStreamPlayer2D
 
-var veloPerseguir: int = 150
+var veloPerseguir: int = 50
 @export var player: Jugador
 @export var perseguir_timer: Timer
 
@@ -23,8 +23,6 @@ var estado : String = "vigilando"
 @onready var punto_enemigo_5 = $"../Punto_enemigo5"
 @onready var punto_enemigo_6 = $"../Punto_enemigo6"
 @onready var punto_enemigo_7 = $"../Punto_enemigo7"
-
-
 
 
 func _ready():
@@ -45,6 +43,7 @@ func _physics_process(delta):
 var ultimo_punto: int = 0
 
 func _ene_vigilando():
+	veloPerseguir = 70
 	
 	if Globales.ene_sigue_a != ultimo_punto:
 		ultimo_punto = Globales.ene_sigue_a
@@ -98,6 +97,7 @@ func _ene_vigilando():
 	#move_and_slide()
 	
 func _ene_persiguiendo():
+	veloPerseguir = 120
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
 	velocity = direction * veloPerseguir
 
@@ -118,12 +118,10 @@ func _on_timerquieto_timeout():
 func _on_timer_perseguir_timer_timeout():
 	estado = "vigilando"
 
-
 func _on_timer_rastreo_timeout():
 	if estado == "persiguiendo":
 		navigation_agent_2d.target_position = player.global_position
 		velocity = position.direction_to(navigation_agent_2d.get_next_path_position())
-
 
 func _on_mirada_enemigo_body_entered(body):
 	if body is Jugador:
@@ -131,16 +129,13 @@ func _on_mirada_enemigo_body_entered(body):
 		perseguir_timer.start()
 		#print("toca a jugador")
 
-
 func _on_area_ruido_ene_body_entered(body):
 	if body is Jugador:
 		Cercania_sonido.play()
-	
 
 func _on_area_ruido_ene_body_exited(body):
 	if body is Jugador:
 		Cercania_sonido.stop()
-
 
 func _on_ataque_area_body_entered(body):
 	if body is Jugador:

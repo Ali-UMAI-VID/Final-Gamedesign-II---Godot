@@ -1,34 +1,46 @@
 [gd_scene format=3 uid="uid://crcmhhyefq5yw"]
 
-[ext_resource type="Texture2D" uid="uid://m13a5j3nhoj5" path="res://Componentes/Sprites/Jugador/Ben tennyson.png" id="1_3lrj7"]
 [ext_resource type="Script" uid="uid://c2i3311jqkbqq" path="res://Componentes/Scripts/Jugador/jugador.gd" id="1_qtn0f"]
+[ext_resource type="Texture2D" uid="uid://d4lrcr2kte3fe" path="res://Componentes/Assets/Jugador/000.png" id="2_vfe1j"]
 [ext_resource type="Script" uid="uid://bqr8l18jekr86" path="res://Componentes/Scripts/Enemigo/Estados/maquinaestado.gd" id="3_75bvj"]
+[ext_resource type="Texture2D" uid="uid://duo2k0bsyl1tf" path="res://Componentes/Assets/Jugador/001.png" id="3_g56iy"]
 [ext_resource type="Script" uid="uid://cx33xg8xa1ax0" path="res://Componentes/Scripts/Jugador/estado_caminar.gd" id="4_pjygu"]
+[ext_resource type="Texture2D" uid="uid://clhef18jdhclc" path="res://Componentes/Assets/Jugador/002.png" id="4_vpom5"]
+[ext_resource type="Texture2D" uid="uid://dstwwnwnuasdr" path="res://Componentes/Assets/Jugador/003.png" id="5_ki2wb"]
 [ext_resource type="Script" uid="uid://ce1yia8p3s1ob" path="res://Componentes/Scripts/Jugador/estado_carga_o_2.gd" id="5_oec6u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3lrj7")
+"texture": ExtResource("2_vfe1j")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_g56iy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_vpom5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_ki2wb")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
-size = Vector2(64, 104)
+size = Vector2(64, 50.267082)
 
 [node name="Jugador" type="CharacterBody2D" unique_id=2082224300]
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.805, 0.805)
 script = ExtResource("1_qtn0f")
 
 [node name="AnimacionJugador" type="AnimatedSprite2D" parent="." unique_id=1974747354]
-scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_vq16u")
 
 [node name="ColisionJugador" type="CollisionShape2D" parent="." unique_id=1480513506]
+position = Vector2(0, 1.242236)
 scale = Vector2(0.45, 0.45)
 shape = SubResource("RectangleShape2D_vpy8e")
 debug_color = Color(0.70196074, 0, 0.5688991, 0.41960785)
@@ -46,6 +58,7 @@ script = ExtResource("5_oec6u")
 [node name="AreaJugador" type="Area2D" parent="." unique_id=1807662451]
 
 [node name="Colision_area" type="CollisionShape2D" parent="AreaJugador" unique_id=1153598267]
+position = Vector2(0, 1.2422359)
 scale = Vector2(0.45, 0.45)
 shape = SubResource("RectangleShape2D_vpy8e")
 
