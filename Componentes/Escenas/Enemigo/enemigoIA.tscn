@@ -5,10 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://bic13ccbr47at" path="res://Componentes/Sonidos/Enemigo/dragon-studio-alien-sounds-463202.mp3" id="6_4h8to"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
-size = Vector2(323.0724, 268.85553)
+size = Vector2(1175.9043, 674.6992)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vq16u"]
-radius = 559.8238
+radius = 106.55398
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h8to"]
 atlas = ExtResource("2_4h8to")
@@ -29,13 +29,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kedtw"]
-radius = 44.21991
+radius = 29.606735
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgweg"]
-radius = 321.79816
+radius = 88.488304
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpy8e"]
-radius = 38.554214
+radius = 14.657258
 
 [node name="enemigoIA" type="CharacterBody2D" unique_id=2044227649 node_paths=PackedStringArray("mirada", "Cercania_sonido", "perseguir_timer")]
 scale = Vector2(0.415, 0.415)
@@ -51,7 +51,8 @@ perseguir_timer = NodePath("TimerPerseguir")
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="colision_punto" type="CollisionShape2D" parent="Area_punto" unique_id=1974083633]
-scale = Vector2(0.99999964, 0.99999964)
+position = Vector2(-6.1035156e-05, 3.0517578e-05)
+scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("RectangleShape2D_vq16u")
 debug_color = Color(0.70196074, 0.5390157, 0.530633, 0.41960785)
 
@@ -102,7 +103,6 @@ volume_db = -15.0
 [node name="ataque_area" type="Area2D" parent="." unique_id=1095659171]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ataque_area" unique_id=528442284]
-position = Vector2(0, -2.4096384)
 shape = SubResource("CircleShape2D_vpy8e")
 debug_color = Color(1, 0.059892774, 0, 0.41960785)
 

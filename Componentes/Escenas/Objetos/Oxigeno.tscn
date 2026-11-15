@@ -8,16 +8,16 @@ radius = 98.76544
 height = 513.58026
 
 [node name="Oxigeno" type="Area2D" unique_id=346199778 groups=["Carga_oxigeno"]]
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.28, 0.28)
 script = ExtResource("1_cjhb3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1917157515]
 position = Vector2(-1.5258789e-05, -1.5258789e-05)
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.28, 0.28)
 texture = ExtResource("2_qpmj1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1695663522]
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.28, 0.28)
 shape = SubResource("CapsuleShape2D_vq16u")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
