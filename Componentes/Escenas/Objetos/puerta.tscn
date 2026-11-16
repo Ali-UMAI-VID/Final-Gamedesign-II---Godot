@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkhjtex27cpn5" path="res://Componentes/Escenas/Objetos/puerta.gd" id="1_htdrr"]
 [ext_resource type="Texture2D" uid="uid://phebm46pqjli" path="res://Componentes/Assets/Tileset/tileset_sf.png" id="1_jgcpp"]
+[ext_resource type="Texture2D" uid="uid://yk1epe4khvu6" path="res://Componentes/Assets/Tileset/Luz.png" id="3_kyf8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htdrr"]
 atlas = ExtResource("1_jgcpp")
@@ -64,6 +65,20 @@ debug_color = Color(0.70196074, 0.6883976, 0, 0.41960785)
 position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_b5vyj")
 debug_color = Color(0.70196074, 0, 0.6631535, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1154647425]
+position = Vector2(0.4999981, 9.536743e-07)
+scale = Vector2(0.24609376, 0.24218751)
+color = Color(1, 0, 0.022075176, 1)
+energy = 0.76
+texture = ExtResource("3_kyf8s")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=377502101]
+position = Vector2(0.12402177, -103.25391)
+scale = Vector2(0.24903107, 0.19729613)
+color = Color(1, 0, 0.022075176, 1)
+energy = 0.76
+texture = ExtResource("3_kyf8s")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://074w0frqhitl" path="res://Componentes/Scripts/Objetos/tarjeta.gd" id="1_6hfkt"]
 [ext_resource type="Texture2D" uid="uid://ras86jk8yycj" path="res://Componentes/Sprites/Objetos/Tarjetita.png" id="2_w3s05"]
+[ext_resource type="Texture2D" uid="uid://yk1epe4khvu6" path="res://Componentes/Assets/Tileset/Luz.png" id="3_w3s05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
 size = Vector2(990.77856, 667.8257)
@@ -19,5 +20,12 @@ centered = false
 position = Vector2(84.735435, 55.850956)
 scale = Vector2(0.17499998, 0.17499998)
 shape = SubResource("RectangleShape2D_vq16u")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2030018175]
+position = Vector2(85.71429, 57.14286)
+scale = Vector2(1.2276787, 0.82180536)
+color = Color(0, 0.0065922737, 1, 1)
+energy = 0.76
+texture = ExtResource("3_w3s05")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -62,11 +62,14 @@ texture = ExtResource("3_i10do")
 anchors_preset = -1
 anchor_left = 1.5040001
 anchor_right = 1.5040001
-offset_left = -505.59204
+offset_left = -606.3435
 offset_top = 69.17293
-offset_right = -59.59204
-offset_bottom = 378.9474
+offset_right = -38.343506
+offset_bottom = 612.1729
 pivot_offset = Vector2(445.99988, 3.8146973e-06)
 theme_override_font_sizes/font_size = 64
-text = "Mision:
-0/3 de tarjetas"
+text = "Misiones:
+. 0/3 de tarjetas
+
+. Activar la
+autodestrucción"

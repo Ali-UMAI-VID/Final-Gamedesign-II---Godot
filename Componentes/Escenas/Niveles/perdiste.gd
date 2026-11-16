@@ -11,6 +11,7 @@ func _on_salir_boton_pressed():
 	get_tree().quit()
 
 func _on_reintentar_boton_pressed():
+	Globales.tarjetas = 0
 	Globales.oxigeno = 100
 	Globales.vidas = 3
 	get_tree().change_scene_to_file("res://Componentes/Escenas/Niveles/nivel.tscn")

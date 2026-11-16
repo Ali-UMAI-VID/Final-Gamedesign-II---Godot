@@ -32,6 +32,7 @@ func _physics_process(delta):
 			velocidad = 200
 			#await get_tree().create_timer(2.0).timeout
 		if not Input.is_action_pressed("Correr"):
+			Globales.esta_corriendo = false
 			velocidad = 100
 
 func _on_area_jugador_area_entered(area):

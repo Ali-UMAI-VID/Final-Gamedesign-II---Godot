@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cico6m1neo85c" path="res://Componentes/Scripts/Objetos/oxigeno.gd" id="1_cjhb3"]
 [ext_resource type="Texture2D" uid="uid://coa5xvwyo48hf" path="res://Componentes/Sprites/Objetos/Oxigenador.png" id="2_qpmj1"]
+[ext_resource type="Texture2D" uid="uid://yk1epe4khvu6" path="res://Componentes/Assets/Tileset/Luz.png" id="3_qpmj1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vq16u"]
 radius = 98.76544
@@ -19,6 +20,13 @@ texture = ExtResource("2_qpmj1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1695663522]
 scale = Vector2(0.28, 0.28)
 shape = SubResource("CapsuleShape2D_vq16u")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1783676873]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(0.7859932, 0.77351713)
+color = Color(0.39607844, 0.76862746, 0.84313726, 1)
+energy = 0.76
+texture = ExtResource("3_qpmj1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
