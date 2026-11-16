@@ -1,31 +1,69 @@
 [gd_scene format=3 uid="uid://bsuxh81u67klt"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_b5vyj"]
+[ext_resource type="Script" uid="uid://bkhjtex27cpn5" path="res://Componentes/Escenas/Objetos/puerta.gd" id="1_htdrr"]
+[ext_resource type="Texture2D" uid="uid://phebm46pqjli" path="res://Componentes/Assets/Tileset/tileset_sf.png" id="1_jgcpp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htdrr"]
+atlas = ExtResource("1_jgcpp")
+region = Rect2(1216, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyf8s"]
+atlas = ExtResource("1_jgcpp")
+region = Rect2(1088, 576, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htdrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyf8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyf8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyf8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyf8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htdrr")
+}],
+"loop": 0,
+"name": &"Puerta",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
-size = Vector2(85.5, 8)
+size = Vector2(64, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq16u"]
-size = Vector2(85, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5vyj"]
+size = Vector2(42, 52)
 
-[node name="Puerta" type="CharacterBody2D" unique_id=9581305]
+[node name="Puerta" type="Node2D" unique_id=955270994]
+script = ExtResource("1_htdrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073815919]
-modulate = Color(0, 0.64963555, 0.66875, 1)
-position = Vector2(42.75, 9.787085)
-scale = Vector2(86.5, 20.57417)
-texture = SubResource("CanvasTexture_b5vyj")
+[node name="AnimacionPuerta" type="AnimatedSprite2D" parent="." unique_id=271768669]
+sprite_frames = SubResource("SpriteFrames_vq16u")
+animation = &"Puerta"
+frame_progress = 0.29016736
 
-[node name="Area2D2" type="Area2D" parent="." unique_id=1879916634]
+[node name="Area2D" type="Area2D" parent="." unique_id=1574818882]
 
-[node name="ColisionPuerta" type="CollisionShape2D" parent="Area2D2" unique_id=1728053990]
-position = Vector2(43.25, 16)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1300192664]
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_vpy8e")
-debug_color = Color(0.7019608, 0, 0.627451, 1)
+debug_color = Color(0.70196074, 0.6883976, 0, 0.41960785)
 
-[node name="Activar_colision" type="Area2D" parent="." unique_id=1305127149]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1176792716]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Activar_colision" unique_id=1988888336]
-position = Vector2(44, 7)
-shape = SubResource("RectangleShape2D_vq16u")
-debug_color = Color(0, 0.70196074, 0.08391722, 0.41960785)
+[node name="ColisionPuerta" type="CollisionShape2D" parent="StaticBody2D" unique_id=763250934]
+position = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_b5vyj")
+debug_color = Color(0.70196074, 0, 0.6631535, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
