@@ -8,7 +8,7 @@
 size = Vector2(1175.9043, 674.6992)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vq16u"]
-radius = 106.55398
+radius = 741.6668
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h8to"]
 atlas = ExtResource("2_4h8to")
@@ -29,13 +29,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kedtw"]
-radius = 29.606735
+radius = 40.64451
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pgweg"]
-radius = 88.488304
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7llaj"]
+size = Vector2(1109.0144, 97.095375)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpy8e"]
-radius = 14.657258
+radius = 26.506027
 
 [node name="enemigoIA" type="CharacterBody2D" unique_id=2044227649 node_paths=PackedStringArray("mirada", "Cercania_sonido", "perseguir_timer")]
 scale = Vector2(0.415, 0.415)
@@ -65,6 +65,7 @@ shape = SubResource("CircleShape2D_vq16u")
 debug_color = Color(0, 0.70196074, 0.1427287, 0.41960785)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=879052464]
+position = Vector2(4.819278, 7.228916)
 scale = Vector2(0.780719, 0.716917)
 sprite_frames = SubResource("SpriteFrames_vpy8e")
 
@@ -76,11 +77,9 @@ debug_color = Color(1, 0.9300269, 0, 0.41960785)
 [node name="mirada_enemigo" type="Area2D" parent="." unique_id=614567606]
 scale = Vector2(0.415, 0.415)
 
-[node name="area_jugador" type="CollisionShape2D" parent="mirada_enemigo" unique_id=1797057436]
-position = Vector2(-1.5258789e-05, 1.9073486e-06)
-scale = Vector2(0.415, 0.415)
-shape = SubResource("CircleShape2D_pgweg")
-debug_color = Color(0, 0.57728136, 0.8173498, 0.41960785)
+[node name="Colision_mirada" type="CollisionShape2D" parent="mirada_enemigo" unique_id=1726573442]
+position = Vector2(328.05933, 50.160408)
+shape = SubResource("RectangleShape2D_7llaj")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1335557601]
 path_desired_distance = 40.0
@@ -102,7 +101,8 @@ volume_db = -15.0
 
 [node name="ataque_area" type="Area2D" parent="." unique_id=1095659171]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ataque_area" unique_id=528442284]
+[node name="ColisionAtaque" type="CollisionShape2D" parent="ataque_area" unique_id=528442284]
+position = Vector2(48.192772, 16.86747)
 shape = SubResource("CircleShape2D_vpy8e")
 debug_color = Color(1, 0.059892774, 0, 0.41960785)
 

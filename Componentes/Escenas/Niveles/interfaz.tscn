@@ -31,11 +31,11 @@ texture_under = ExtResource("2_jyg62")
 texture_progress = ExtResource("3_fcoji")
 
 [node name="BarraVida" type="TextureProgressBar" parent="." unique_id=1133950181]
-offset_left = 1947.3682
-offset_top = 771.4286
-offset_right = 2222.368
-offset_bottom = 1158.4287
-scale = Vector2(0.515, 0.515)
+offset_left = 2496.2407
+offset_top = 1108.271
+offset_right = 2589.6782
+offset_bottom = 1495.2711
+scale = Vector2(0.745, 0.745)
 fill_mode = 3
 texture_under = ExtResource("4_rq02p")
 texture_progress = ExtResource("5_ivbd2")

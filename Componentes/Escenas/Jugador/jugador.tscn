@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://clhef18jdhclc" path="res://Componentes/Assets/Jugador/002.png" id="4_vpom5"]
 [ext_resource type="Texture2D" uid="uid://dstwwnwnuasdr" path="res://Componentes/Assets/Jugador/003.png" id="5_ki2wb"]
 [ext_resource type="Script" uid="uid://ce1yia8p3s1ob" path="res://Componentes/Scripts/Jugador/estado_carga_o_2.gd" id="5_oec6u"]
+[ext_resource type="Script" uid="uid://d0jqyf76y3agb" path="res://Componentes/Scripts/Jugador/estado_correr.gd" id="8_g56iy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
 animations = [{
@@ -50,6 +51,9 @@ estado_inicial = NodePath("Estado_Caminar")
 
 [node name="Estado_Caminar" type="Node" parent="MaquinaEstado" unique_id=684051601]
 script = ExtResource("4_pjygu")
+
+[node name="Estado_Correr" type="Node" parent="MaquinaEstado" unique_id=63304758]
+script = ExtResource("8_g56iy")
 
 [node name="Estado_Oxigeno" type="Node" parent="MaquinaEstado" unique_id=1956664960]
 script = ExtResource("5_oec6u")

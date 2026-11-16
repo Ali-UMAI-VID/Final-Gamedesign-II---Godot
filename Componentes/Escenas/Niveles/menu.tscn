@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://i00colgi1drx"]
 
+[ext_resource type="Script" uid="uid://bhgcppj2gk00f" path="res://Componentes/Escenas/Niveles/menu.gd" id="1_fu3lt"]
+[ext_resource type="Texture2D" uid="uid://cjblijt2hwpp7" path="res://Componentes/Assets/Interfaz/Pantallas/Menu Alien.png" id="1_hhete"]
+
 [node name="Menu" type="Control" unique_id=394333280]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +10,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fu3lt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=461526232]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_hhete")
+
+[node name="Jugar_boton" type="Button" parent="." unique_id=922357695]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 402.0
+offset_right = 1192.0
+offset_bottom = 475.0
+
+[connection signal="pressed" from="Jugar_boton" to="." method="_on_jugar_boton_pressed"]

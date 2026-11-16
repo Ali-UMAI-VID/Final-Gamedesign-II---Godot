@@ -4,7 +4,9 @@ var jugador_dentro: bool = false
 
 func _physics_process(delta):
 	if Globales.gana_oxigeno == false:
-		Globales.oxigeno -= 0.4 * delta
+		if Globales.esta_corriendo == false:
+			Globales.oxigeno -= 0.4 * delta
+		else: Globales.oxigeno -= 3.5 * delta
 	if Globales.gana_oxigeno == true:
 		Globales.oxigeno += delta * 7
 

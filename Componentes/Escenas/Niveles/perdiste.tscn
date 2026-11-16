@@ -1,5 +1,23 @@
 [gd_scene format=3 uid="uid://w6ih5w23i0ow"]
 
+[ext_resource type="Texture2D" uid="uid://nrf15adwm1dk" path="res://Componentes/Assets/Interfaz/Pantallas/Derrota Oxigeno.png" id="1_2rbkh"]
+[ext_resource type="Script" uid="uid://c6ik65kbw0na0" path="res://Componentes/Escenas/Niveles/perdiste.gd" id="1_jycoe"]
+[ext_resource type="Texture2D" uid="uid://cftan15b384tc" path="res://Componentes/Assets/Interfaz/Pantallas/Derrota alien 3.png" id="2_jycoe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vq16u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2rbkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jycoe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Perdiste" type="Control" unique_id=956529871]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +25,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jycoe")
+
+[node name="Tipo_muerte" type="AnimatedSprite2D" parent="." unique_id=1437857698]
+sprite_frames = SubResource("SpriteFrames_vq16u")
+offset = Vector2(960, 540)
+
+[node name="Salir_boton" type="Button" parent="." unique_id=53361322]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 566.0
+offset_right = 567.0
+offset_bottom = 641.0
+
+[node name="Reintentar_boton" type="Button" parent="." unique_id=1201058838]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 395.0
+offset_right = 567.0
+offset_bottom = 470.0
+
+[connection signal="pressed" from="Salir_boton" to="." method="_on_salir_boton_pressed"]
+[connection signal="pressed" from="Reintentar_boton" to="." method="_on_reintentar_boton_pressed"]

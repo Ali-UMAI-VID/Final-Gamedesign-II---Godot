@@ -64,9 +64,10 @@ func _physics_process(delta):
 	
 	
 	if Globales.vidas <= 0:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Componentes/Escenas/Niveles/perdiste.tscn")
 	if Globales.oxigeno <= 0:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Componentes/Escenas/Niveles/perdiste.tscn")
+	
 	oxigeno.text = str(int(Globales.oxigeno)) + "%"
  #1 es izquierda, 2 es derecha, 3 arriba y 4 abajo
 	#if puerta != 0:

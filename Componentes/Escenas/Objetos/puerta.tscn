@@ -38,10 +38,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpy8e"]
-size = Vector2(64, 256)
+size = Vector2(64, 198)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5vyj"]
-size = Vector2(42, 52)
+size = Vector2(42, 36)
 
 [node name="Puerta" type="Node2D" unique_id=955270994]
 script = ExtResource("1_htdrr")
@@ -54,14 +54,14 @@ frame_progress = 0.29016736
 [node name="Area2D" type="Area2D" parent="." unique_id=1574818882]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1300192664]
-position = Vector2(0, -32)
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_vpy8e")
 debug_color = Color(0.70196074, 0.6883976, 0, 0.41960785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1176792716]
 
 [node name="ColisionPuerta" type="CollisionShape2D" parent="StaticBody2D" unique_id=763250934]
-position = Vector2(1, 6)
+position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_b5vyj")
 debug_color = Color(0.70196074, 0, 0.6631535, 0.41960785)
 

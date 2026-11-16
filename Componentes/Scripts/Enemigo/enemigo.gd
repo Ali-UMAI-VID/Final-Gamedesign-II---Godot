@@ -97,7 +97,7 @@ func _ene_vigilando():
 	#move_and_slide()
 	
 func _ene_persiguiendo():
-	veloPerseguir = 120
+	veloPerseguir = 130
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
 	velocity = direction * veloPerseguir
 
@@ -125,6 +125,7 @@ func _on_timer_rastreo_timeout():
 
 func _on_mirada_enemigo_body_entered(body):
 	if body is Jugador:
+		veloPerseguir = 80
 		estado = "persiguiendo"
 		perseguir_timer.start()
 		#print("toca a jugador")

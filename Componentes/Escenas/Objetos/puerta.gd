@@ -3,7 +3,7 @@ class_name puerta
 
 @onready var animacion_puerta = $AnimacionPuerta
 @onready var colision_puerta = $StaticBody2D/ColisionPuerta
-
+@export var puerta_nivel: int = 0
 var dentro: bool = false
 
 func _physics_process(delta):
@@ -16,7 +16,10 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body is Jugador|| body is EnemigoIA:
-		dentro = true
+		if puerta_nivel == 0:
+			dentro = true
+		if puerta_nivel == 1 and Globales.tarjetas == 3:
+			dentro = true
 
 func _on_area_2d_body_exited(body):
 	if body is Jugador|| body is EnemigoIA:

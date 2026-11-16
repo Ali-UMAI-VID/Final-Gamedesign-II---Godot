@@ -3,6 +3,7 @@ class_name EstadoCaminar
 @onready var animacion_jugador = $"../../AnimacionJugador"
 @onready var jugador = $"../.."
 @export var velocidad : float = 100
+
 func entrada():
 	maquina.jugador.movimiento_lateral_activado = true
 func _physics_process(delta):
@@ -26,6 +27,12 @@ func _physics_process(delta):
 		jugador.velocity.x = direccion * velocidad
 		jugador.velocity.y = escalera * velocidad
 		jugador.move_and_slide()
+		if Input.is_action_pressed("Correr"):
+			Globales.esta_corriendo = true
+			velocidad = 200
+			#await get_tree().create_timer(2.0).timeout
+		if not Input.is_action_pressed("Correr"):
+			velocidad = 100
 
 func _on_area_jugador_area_entered(area):
 	if area.is_in_group("Carga_oxigeno"):
